@@ -6,4 +6,4 @@
 npm i
 npm start
 ```
-打开http://localhost:4000/graphql即可进行客户端查询
+打开http://localhost:4000/graphql 即可进行客户端查询
