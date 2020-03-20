@@ -1,5 +1,5 @@
 `
-query fun($characterId: String="1234", $withUserName: Boolean! = true) {
+query OperationName($characterId: String="1234", $withUserName: Boolean! = true) {
 	hello
   hero {
     name
@@ -51,6 +51,11 @@ fragment comparisonFields on Character {
   }
   friendsConnection(id: $characterId) {
     name
+  }
+}
+mutation CreateInput($reviewInput: ReviewInput) {
+  createReview(review: $reviewInput) {
+    status
   }
 }
 `

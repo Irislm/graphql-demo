@@ -14,6 +14,9 @@ var schema = buildSchema(`
     character: Character
     search: SearchResult
   }
+  type Mutation {
+    createReview(review: ReviewInput): Result
+  }
 
   #对象类型和字段
   type Hero {
@@ -61,6 +64,14 @@ var schema = buildSchema(`
   }
   #联合类型
   union SearchResult = Human | Droid
+  #输入类型
+  input ReviewInput {
+    stars: Int!
+    comments: String
+  }
+  type Result {
+    status: String
+  }
 `);
 
 // root 提供所有 API 入口端点相应的解析器函数
@@ -135,6 +146,11 @@ var root = {
       // 不带这个字段 会报错abstract-type-n-must-resolve-to-an-object-type-at-runtime
       __typename: 'Droid'
     }
+  },
+  createReview: () => {
+    return {
+      status: 'success'
+    };
   }
 };
 
